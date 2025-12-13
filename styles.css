@@ -1,0 +1,264 @@
+/* === Базовые стили (локализовано на русском) === */
+:root {
+    --bg: #111111;                         /* фон в тёмном стиле */
+    --panel: #181818;                      /* цвет панелей */
+    --text: #e6e6e6;                       /* основной текст */
+    --muted: #a9b0bb;                      /* приглушённый текст */
+    --accent: #b48a22;                     /* акцентный (темно-желтый) */
+    --accent-2: #ffff44;                   /* дополнительный акцент (светло-желтый) */
+    --danger: #ff5c5c;                     /* для заметок/предупреждений */
+    --header-bg: #181818;                  /* фон хедера(шапки) */
+    --link-accent: #666;                   /* цвет ссылок */
+    --link-accent-hover: var(--accent);      /* цвет ссылок при наведении */
+    --solid: #1e242d;                      /* цвет границ */
+    --card-border-accent: #b48a22;         /* цвет границы карточек при наведении */
+    --shadow: rgba(0,0,0,.35);
+    --radius: 14px;
+    --radius-sm: 10px;
+}
+
+* {
+    box-sizing: border-box; }
+
+html, body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+body {
+    font-family: "sf", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding-top: 64px;
+}
+
+/* Стиль выделения текста */
+::selection {
+    background-color: var(--accent-2);
+    color: var(--bg);
+}
+
+::-moz-selection {
+    background-color: var(--accent);
+    color: var(--bg);
+}
+
+/* Отдельный стиль ссылок: несформатированные ссылки с .link используют --link-accent */
+.link {
+    color: var(--link-accent);
+    text-decoration: none;
+}
+
+.link:visited { color: var(--link-accent); }
+
+.link:hover { color: var(--text); }
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+/* === Шапка === */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    backdrop-filter: saturate(120%) blur(10px);
+    background: var(--header-bg);
+    z-index: 50;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 64px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: .2px;
+    margin: 0;
+}
+
+.brand-text {
+    font-size: 18px;
+    transform: translateY(0px);
+    transition: transform 120ms ease;
+}
+
+.logo {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.site-icon {
+    height: 40px;
+    width: 4px;
+    display: flex;
+}
+
+/* Центрированный логотип */
+.logo-center {
+    height: 50px;
+    width: auto;
+    display: block;
+    transform: translateY(0px);
+    transition: transform 120ms ease;
+}
+
+.nav-toggle {
+    display: none;
+    margin-left: auto;
+    font-size: 22px;
+    color: var(--text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.primary-nav ul {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: all .2s ease;
+}
+
+.primary-nav a:hover {
+    color: var(--text);
+    background: #1b2027;
+}
+
+.primary-nav .btn-support {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 6px 24px var(--shadow);
+}
+
+/* === Грид ссылок === */
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 24px 0 8px;
+    color: var(--text);
+    text-align: center;
+    cursor: default;
+}
+
+.page-subtitle {
+    font-size: 16px;
+    margin: 0 0 24px;
+    color: var(--muted);
+    text-align: center;
+    cursor: default;
+}
+
+.page-subtitle2 {
+    font-size: 18px;
+    margin: 20px 0 28px;
+    color: var(--text);
+    text-align: center;
+    cursor: default;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    padding: 24px 0;
+}
+
+.card {
+    display: block;
+    padding: 18px;
+    background: var(--panel);
+    border-radius: var(--radius);
+    text-decoration: none; color: var(--text);
+    box-shadow: 0 10px 30px var(--shadow);
+    border: 1px solid var(--solid); transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px var(--shadow);
+    border-color: var(--card-border-accent);
+}
+
+/* === Футер === */
+.site-footer {
+    border-top: 1px solid var(--solid);
+    padding: 20px 0;
+    background: rgba(15,18,22,.9);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.site-footer nav a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-right: 14px;
+}
+
+.site-footer nav a:hover {
+    color: var(--text);
+}
+
+/* === Адаптив === */
+@media (max-width: 1100px) {
+  .links-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px) {
+  .links-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+    .header-inner { height: auto; padding: 12px 0; }
+    .nav-toggle { display: block; }
+    .primary-nav { display: none; }
+    .primary-nav.open { display: block; }
+    .primary-nav ul { flex-direction: column; }
+    .links-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28px; }
+}
